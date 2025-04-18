@@ -83,7 +83,7 @@ class ImageLoader(ImageContainer):
             if reader.canRead():
                 size = reader.size()
                 if size:
-                    if self.autoTransform and reader.transformation() & 4:
+                    if self.autoTransform and reader.transformation() == QImageIOHandler.Transformation.TransformationRotate90:
                         size.transpose()
                     self._size = size
         return QSize(self._size)
